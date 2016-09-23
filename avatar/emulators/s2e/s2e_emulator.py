@@ -38,7 +38,9 @@ class S2EBreakpoint(Breakpoint):
             raise Exception("Breakpoint cannot have a handler and be waited on")
 
         if timeout == 0:
-            return self._queue.get(False)
+            #TODO: check this one. Maybe, it should be:
+            return self._queue.get(True)
+            #return self._queue.get(False)
         else:
             return self._queue.get(True, timeout)
     
